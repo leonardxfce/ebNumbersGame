@@ -12,15 +12,15 @@ class JugadorNumero {
         $this->estadoDeLaAdivinanza = "";
     }
 
-    public static function crear(NumeroSecreto $numeroSecreto) : JugadorNumero {
+    public static function crear(NumeroSecreto $numeroSecreto): JugadorNumero {
         return new JugadorNumero($numeroSecreto);
     }
 
-    public function pensarNumero() {
+    public function pensar() {
         $this->numeroSecreto->generar();
     }
 
-    public function analizarEl($numeroDelOtroJugador) {
+    public function analizar($numeroDelOtroJugador) {
         if ($this->numeroSecreto->es($numeroDelOtroJugador)) {
             $this->estadoDeLaAdivinanza = "=";
         }
@@ -33,7 +33,7 @@ class JugadorNumero {
         return $this->estadoDeLaAdivinanza;
     }
 
-    public function responder(): String {
+    public function decir(): String {
         return $this->estadoDeLaAdivinanza;
     }
 

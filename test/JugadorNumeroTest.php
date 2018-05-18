@@ -15,21 +15,21 @@ class JugadorNumeroTest extends TestCase {
     public function testElEstadoDeLaAdivinanzaEsVacioSiNoSeGenero() {
         $numeroSecreto = NumeroSecreto::crear();
         $jugadorNumero = JugadorNumero::crear($numeroSecreto);
-        $this->assertEquals("", $jugadorNumero->responder());
+        $this->assertEquals("", $jugadorNumero->decir());
     }
 
     public function testSeRespondeMayorAUnNumeroSuperiorAlRangoPorDefecto() {
         $numeroSecreto = NumeroSecreto::crear();
         $jugadorNumero = JugadorNumero::crear($numeroSecreto);
-        $jugadorNumero->pensarNumero();
-        $this->assertEquals(">", $jugadorNumero->analizarEl(101));
+        $jugadorNumero->pensar();
+        $this->assertEquals(">", $jugadorNumero->analizar(101));
     }
 
     public function testSeRespondeMenorAUnNumeroInferiorAlRangoPorDefecto() {
         $numeroSecreto = NumeroSecreto::crear();
         $jugadorNumero = JugadorNumero::crear($numeroSecreto);
-        $jugadorNumero->pensarNumero();
-        $this->assertEquals("<", $jugadorNumero->analizarEl(-1));
+        $jugadorNumero->pensar();
+        $this->assertEquals("<", $jugadorNumero->analizar(-1));
     }
 
 }
