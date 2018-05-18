@@ -4,7 +4,6 @@ use PHPUnit\Framework\TestCase;
 use EB\JugadorNumero;
 use EB\NumeroSecreto;
 
-
 class JugadorNumeroTest extends TestCase {
 
     public function testCrearDevuelveUnJugadorNumero() {
@@ -13,22 +12,24 @@ class JugadorNumeroTest extends TestCase {
         $this->assertInstanceOf(JugadorNumero::class, $jugadorNumero);
     }
 
-    public function testElEstadoDeLaAdivinanzaEsVacioSiNoSeGenero(){
+    public function testElEstadoDeLaAdivinanzaEsVacioSiNoSeGenero() {
         $numeroSecreto = NumeroSecreto::crear();
         $jugadorNumero = JugadorNumero::crear($numeroSecreto);
         $this->assertEquals("", $jugadorNumero->responder());
     }
-    
-    public function testSeRespondeMayorAUnNumeroSuperiorAlRango() {
+
+    public function testSeRespondeMayorAUnNumeroSuperiorAlRangoPorDefecto() {
         $numeroSecreto = NumeroSecreto::crear();
         $jugadorNumero = JugadorNumero::crear($numeroSecreto);
         $jugadorNumero->pensarNumero();
-        $this->assertEquals(">",$jugadorNumero->analizarEl(101));
+        $this->assertEquals(">", $jugadorNumero->analizarEl(101));
     }
-    public function testSeRespondeMenorAUnNumeroInferiorAlRango() {
+
+    public function testSeRespondeMenorAUnNumeroInferiorAlRangoPorDefecto() {
         $numeroSecreto = NumeroSecreto::crear();
         $jugadorNumero = JugadorNumero::crear($numeroSecreto);
         $jugadorNumero->pensarNumero();
-        $this->assertEquals("<",$jugadorNumero->analizarEl(-1));
+        $this->assertEquals("<", $jugadorNumero->analizarEl(-1));
     }
+
 }
