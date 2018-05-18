@@ -1,0 +1,19 @@
+{
+    "name": "vendor/eb-numbers-game",
+    "description": "Description of project ebNumbersGame.",
+    "authors": [
+        {
+            "name": "leo",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^5"
+    },
+    "autoload": {
+        "classmap": [
+            "src/",
+           "test/"
+        ]
+    }
+}
