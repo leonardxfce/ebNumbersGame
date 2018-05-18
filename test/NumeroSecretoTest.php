@@ -1,7 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use NumeroSecreto;
+use EB\NumeroSecreto;
+
 
 class NumeroSecretoTest extends TestCase {
 

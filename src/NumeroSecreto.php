@@ -1,5 +1,7 @@
 <?php
 
+namespace EB;
+
 class NumeroSecreto {
 
     private $min;

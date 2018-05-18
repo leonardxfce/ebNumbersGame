@@ -1,5 +1,7 @@
 <?php
 
+namespace EB;
+
 class JugadorNumero {
 
     private $numeroSecreto;
@@ -7,10 +9,10 @@ class JugadorNumero {
 
     private function __construct(NumeroSecreto $numero) {
         $this->numeroSecreto = $numero;
-        $this->estadoDeLaAdivinanza = null;
+        $this->estadoDeLaAdivinanza = "";
     }
 
-    public function crear(NumeroSecreto $numeroSecreto) {
+    public static function crear(NumeroSecreto $numeroSecreto) : JugadorNumero {
         return new JugadorNumero($numeroSecreto);
     }
 
@@ -28,6 +30,7 @@ class JugadorNumero {
         if ($this->numeroSecreto->esMenorQue($numeroDelOtroJugador)) {
             $this->estadoDeLaAdivinanza = ">";
         }
+        return $this->estadoDeLaAdivinanza;
     }
 
     public function responder(): String {
