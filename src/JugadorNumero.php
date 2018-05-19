@@ -2,7 +2,7 @@
 
 namespace EB;
 
-class JugadorNumero {
+class JugadorNumero implements Jugable {
 
     private $numeroSecreto;
     private $estadoDeLaAdivinanza;

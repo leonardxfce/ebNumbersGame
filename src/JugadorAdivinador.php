@@ -2,7 +2,7 @@
 
 namespace EB;
 
-class JugadorAdivinador {
+class JugadorAdivinador implements Jugable {
 
     private $numeroSecreto;
     private $min;
@@ -20,10 +20,10 @@ class JugadorAdivinador {
 
     public function analizar($repuestaDelOtroJugador) {
         if ($repuestaDelOtroJugador === ">") {
-            $this->min =  $this->decir() + 1;
+            $this->min = $this->decir() + 1;
         }
         if ($repuestaDelOtroJugador === "<") {
-            $this->max = $this->decir() - 1 ;
+            $this->max = $this->decir() - 1;
         }
         if ($repuestaDelOtroJugador === "=") {
             $this->max = $this->decir();
@@ -33,7 +33,7 @@ class JugadorAdivinador {
 
     public function pensar() {
         $this->numeroSecreto = $this->numeroSecreto
-                ->crearEntre($this->min, $this->max); //Algo huele mal aca :(
+                ->crearEntre($this->min, $this->max);
         $this->numeroSecreto->generar();
     }
 
