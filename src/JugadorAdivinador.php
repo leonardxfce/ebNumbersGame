@@ -41,8 +41,4 @@ class JugadorAdivinador {
         return $this->numeroSecreto->es();
     }
 
-    public function darLimites(): array {
-        return [$this->min, $this->max];
-    }
-
 }

@@ -19,25 +19,29 @@ class JugadorAdivinadorTest extends TestCase {
         $this->assertTrue(is_numeric($jugadorAdivinador->decir()));
     }
 
-    public function testRetornaUnArrayDeLimites() {
+    public function testElJugadorDaNumerosMenoresHastaElCero() {
         $numeroSecreto = NumeroSecreto::crear();
         $jugadorAdivinador = JugadorAdivinador::crear($numeroSecreto);
         $jugadorAdivinador->pensar();
-        $resultado = $jugadorAdivinador->darLimites();
-        $this->assertTrue(is_array($resultado));
-        $this->assertTrue($resultado[0] < $resultado[1]);
-    }
-
-    public function testElJugadorCambiaSuLimiteMaximo() {
-        $numeroSecreto = NumeroSecreto::crear();
-        $jugadorAdivinador = JugadorAdivinador::crear($numeroSecreto);
-        $jugadorAdivinador->pensar();
-        $resultado1 = $jugadorAdivinador->darLimites();
+        $resultado1 = $jugadorAdivinador->decir();
         for ($index = 0; $index < 1000; $index++) {
             $jugadorAdivinador->analizar("<");
             $jugadorAdivinador->pensar();
-            $resultado2 = $jugadorAdivinador->darLimites();
-            $this->assertGreaterThanOrEqual($resultado2[1], $resultado1[1]);
+            $resultado2 = $jugadorAdivinador->decir();
+            $this->assertGreaterThanOrEqual($resultado2, $resultado1);
+        }
+    }
+    
+    public function testElJugadorDaNumerosMayoresHastaElCien() {
+        $numeroSecreto = NumeroSecreto::crear();
+        $jugadorAdivinador = JugadorAdivinador::crear($numeroSecreto);
+        $jugadorAdivinador->pensar();
+        $resultado1 = $jugadorAdivinador->decir();
+        for ($index = 0; $index < 1000; $index++) {
+            $jugadorAdivinador->analizar(">");
+            $jugadorAdivinador->pensar();
+            $resultado2 = $jugadorAdivinador->decir();
+            $this->assertGreaterThanOrEqual($resultado1,$resultado2);
         }
     }
 
