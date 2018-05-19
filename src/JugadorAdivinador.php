@@ -20,10 +20,14 @@ class JugadorAdivinador {
 
     public function analizar($repuestaDelOtroJugador) {
         if ($repuestaDelOtroJugador === ">") {
-            $this->min = $this->decir() + 1;
+            $this->min =  $this->decir() + 1;
         }
         if ($repuestaDelOtroJugador === "<") {
-            $this->max = $this->decir() - 1;
+            $this->max = $this->decir() - 1 ;
+        }
+        if ($repuestaDelOtroJugador === "=") {
+            $this->max = $this->decir();
+            $this->min = $this->decir();
         }
     }
 
@@ -35,6 +39,10 @@ class JugadorAdivinador {
 
     public function decir(): int {
         return $this->numeroSecreto->es();
+    }
+
+    public function darLimites(): array {
+        return [$this->min, $this->max];
     }
 
 }

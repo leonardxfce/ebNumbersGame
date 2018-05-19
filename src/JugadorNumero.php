@@ -25,10 +25,10 @@ class JugadorNumero {
             $this->estadoDeLaAdivinanza = "=";
         }
         if ($this->numeroSecreto->esMayorQue($numeroDelOtroJugador)) {
-            $this->estadoDeLaAdivinanza = "<";
+            $this->estadoDeLaAdivinanza = ">";
         }
         if ($this->numeroSecreto->esMenorQue($numeroDelOtroJugador)) {
-            $this->estadoDeLaAdivinanza = ">";
+            $this->estadoDeLaAdivinanza = "<";
         }
         return $this->estadoDeLaAdivinanza;
     }

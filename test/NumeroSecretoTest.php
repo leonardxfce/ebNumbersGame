@@ -3,7 +3,6 @@
 use PHPUnit\Framework\TestCase;
 use EB\NumeroSecreto;
 
-
 class NumeroSecretoTest extends TestCase {
 
     public function testCrearEntreDevuelveUnNumeroSecreto() {
@@ -24,15 +23,23 @@ class NumeroSecretoTest extends TestCase {
         $numeroSecreto2->generar();
         $this->assertNotEquals($numeroSecreto2->es(), $numeroSecreto->es());
     }
-    public function testElNumeroSecretoEsMenorQue50() {
-        $numeroSecreto = NumeroSecreto::crearEntre(0, 30);
-        $resultado = $numeroSecreto->esMenorQue(50);
-        $this->assertTrue($resultado);
+
+    public function testElNumeroSecretoDaNumerosMenores() {
+        for ($index = 0; $index < 1000; $index++) {
+            $numeroSecreto = NumeroSecreto::crearEntre(0, 99);
+            $numeroSecreto->generar();
+            $resultado = $numeroSecreto->esMenorQue($numeroSecreto->es() + 1);
+            $this->assertTrue($resultado);
+        }
     }
-    public function testElNumeroSecretoEsMayorQue50() {
-        $numeroSecreto = NumeroSecreto::crearEntre(50, 100);
-        $numeroSecreto->generar();
-        $resultado = $numeroSecreto->esMayorQue(40);
-        $this->assertTrue($resultado);
+
+    public function testElNumeroSecretoDaNumerosMayores() {
+        for ($index = 0; $index < 1000; $index++) {
+            $numeroSecreto = NumeroSecreto::crearEntre(1, 100);
+            $numeroSecreto->generar();
+            $resultado = $numeroSecreto->esMayorQue($numeroSecreto->es() - 1);
+            $this->assertTrue($resultado);
+        }
     }
+
 }

@@ -18,18 +18,18 @@ class JugadorNumeroTest extends TestCase {
         $this->assertEquals("", $jugadorNumero->decir());
     }
 
-    public function testSeRespondeMayorAUnNumeroSuperiorAlRangoPorDefecto() {
+    public function testSeRespondeMenorAUnNumeroSuperiorAlRangoPorDefecto() {
         $numeroSecreto = NumeroSecreto::crear();
         $jugadorNumero = JugadorNumero::crear($numeroSecreto);
         $jugadorNumero->pensar();
-        $this->assertEquals(">", $jugadorNumero->analizar(101));
+        $this->assertEquals("<", $jugadorNumero->analizar(101));
     }
 
-    public function testSeRespondeMenorAUnNumeroInferiorAlRangoPorDefecto() {
+    public function testSeRespondeMayorAUnNumeroInferiorAlRangoPorDefecto() {
         $numeroSecreto = NumeroSecreto::crear();
         $jugadorNumero = JugadorNumero::crear($numeroSecreto);
         $jugadorNumero->pensar();
-        $this->assertEquals("<", $jugadorNumero->analizar(-1));
+        $this->assertEquals(">", $jugadorNumero->analizar(-1));
     }
 
 }
