@@ -2,12 +2,12 @@
 
 namespace EB;
 
-require 'NumeroSecreto.php';
-require 'JugadorNumero.php';
-require 'JugadorAdivinador.php';
+require '../vendor/autoload.php';
 
 $numeroSecreto = NumeroSecreto::crear();
-$jugadorNumero = JugadorNumero::crear($numeroSecreto);
+$consola = UtilConsola::crearManejadorConsola();
+//$jugadorNumero = JugadorNumero::crear($numeroSecreto);
+$jugadorNumero = HumanoNumero::participar($consola);
 $jugadorAdivinanza = JugadorAdivinador::crear($numeroSecreto);
 $jugadorNumero->pensar();
 $condicion = true;
@@ -17,7 +17,8 @@ while ($condicion) {
     $jugadorNumero->analizar($numeroDelAdivinador);
     $simboloDelJugadorSecreto = $jugadorNumero->decir();
     $jugadorAdivinanza->analizar($simboloDelJugadorSecreto);
-    print_r($numeroDelAdivinador."\n");
-    print_r($simboloDelJugadorSecreto."\n");
+    //var_dump($numeroDelAdivinador . "\n");
+    //var_dump($simboloDelJugadorSecreto . "\n");
+    //var_dump($simboloDelJugadorSecreto !== "=");
     $condicion = $simboloDelJugadorSecreto !== "=";
 }
