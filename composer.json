@@ -1,10 +1,10 @@
 {
     "name": "vendor/eb-numbers-game",
-    "description": "Description of project ebNumbersGame.",
+    "description": "Juego de Numeros para EventBrite",
     "authors": [
         {
-            "name": "leo",
-            "email": "your@email.here"
+            "name": "leonardo Araoz",
+            "email": "leonardo.araoz.dev@gmail.com"
         }
     ],
     "require": {
