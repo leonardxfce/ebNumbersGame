@@ -23,7 +23,7 @@ class HumanoNumero implements Jugable {
     }
 
     public function pensar() {
-        $this->consola->mostrar("Pensa en numero");
+        $this->consola->mostrar("Pensa en numero (Enter cuando estes listo)");
     }
 
 }
