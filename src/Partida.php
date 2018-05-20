@@ -64,14 +64,16 @@ class Partida {
         } while ($condicion);
     }
 
-    public function seguirJugando() {
-        $this->consola->mostrar("Seguir Jugando");
-        $opcion = $this->consola->leer();
+    public function seguirJugando($opcion) {
         if ($opcion === "SI") {
             $this->demo = false;
             return true;
         }
         return false;
+    }
+
+    public function darJugadores() {
+        return [$this->jugadorQuePiensaElNumero, $this->jugadorQueAdivinaElNumero];
     }
 
 }

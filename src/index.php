@@ -9,5 +9,7 @@ $partida = Partida::crear($consola);
 do {
     $partida->configurar();
     $partida->jugar();
-    $foo = $partida->seguirJugando();
+    $this->consola->mostrar("Seguir Jugando");
+    $opcion = $this->consola->leer();
+    $foo = $partida->seguirJugando($opcion);
 } while ($foo);
