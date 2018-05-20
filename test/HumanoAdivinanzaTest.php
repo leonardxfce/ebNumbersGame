@@ -2,16 +2,19 @@
 
 class HumanoAdivinanzaTest extends PHPUnit\Framework\TestCase {
 
-    public function testDevuelveUnHumanoAdivinanza() {
+    private $humanoAdivinanza;
+
+    public function setUp() {
         $consola = \EB\UtilConsola::crearManejadorConsola();
-        $humanoAdivinanza = EB\HumanoAdivinanza::participar($consola);
-        $this->assertInstanceOf(EB\HumanoAdivinanza::class, $humanoAdivinanza);
+        $this->humanoAdivinanza = EB\HumanoAdivinanza::participar($consola);
+    }
+
+    public function testDevuelveUnHumanoAdivinanza() {
+        $this->assertInstanceOf(EB\HumanoAdivinanza::class, $this->humanoAdivinanza);
     }
 
     public function testDevuelveNullAlComenzarAParticipar() {
-        $consola = \EB\UtilConsola::crearManejadorConsola();
-        $humanoAdivinanza = EB\HumanoAdivinanza::participar($consola);
-        $this->assertNull($humanoAdivinanza->decir());
+        $this->assertNull($this->humanoAdivinanza->decir());
     }
 
 }

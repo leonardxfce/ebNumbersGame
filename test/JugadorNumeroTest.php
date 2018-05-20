@@ -6,30 +6,29 @@ use EB\NumeroSecreto;
 
 class JugadorNumeroTest extends TestCase {
 
-    public function testCrearDevuelveUnJugadorNumero() {
+    private $jugadorNumero;
+
+    public function setUp() {
         $numeroSecreto = NumeroSecreto::crear();
-        $jugadorNumero = JugadorNumero::crear($numeroSecreto);
-        $this->assertInstanceOf(JugadorNumero::class, $jugadorNumero);
+        $this->jugadorNumero = JugadorNumero::crear($numeroSecreto);
+    }
+
+    public function testCrearDevuelveUnJugadorNumero() {
+        $this->assertInstanceOf(JugadorNumero::class, $this->jugadorNumero);
     }
 
     public function testElEstadoDeLaAdivinanzaEsVacioSiNoSeGenero() {
-        $numeroSecreto = NumeroSecreto::crear();
-        $jugadorNumero = JugadorNumero::crear($numeroSecreto);
-        $this->assertEquals("", $jugadorNumero->decir());
+        $this->assertEquals("", $this->jugadorNumero->decir());
     }
 
     public function testSeRespondeMenorAUnNumeroSuperiorAlRangoPorDefecto() {
-        $numeroSecreto = NumeroSecreto::crear();
-        $jugadorNumero = JugadorNumero::crear($numeroSecreto);
-        $jugadorNumero->pensar();
-        $this->assertEquals("<", $jugadorNumero->analizar(101));
+        $this->jugadorNumero->pensar();
+        $this->assertEquals("<", $this->jugadorNumero->analizar(101));
     }
 
     public function testSeRespondeMayorAUnNumeroInferiorAlRangoPorDefecto() {
-        $numeroSecreto = NumeroSecreto::crear();
-        $jugadorNumero = JugadorNumero::crear($numeroSecreto);
-        $jugadorNumero->pensar();
-        $this->assertEquals(">", $jugadorNumero->analizar(-1));
+        $this->jugadorNumero->pensar();
+        $this->assertEquals(">", $this->jugadorNumero->analizar(-1));
     }
 
 }

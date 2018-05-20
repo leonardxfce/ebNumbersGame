@@ -6,54 +6,51 @@ use EB\NumeroSecreto;
 
 class JugadorAdivinadorTest extends TestCase {
 
-    public function testCrearDevuelveUnJugadorAdivinador() {
+    private $jugadorAdivinador;
+
+    public function setUp() {
         $numeroSecreto = NumeroSecreto::crear();
-        $jugadorAdivinador = JugadorAdivinador::crear($numeroSecreto);
-        $this->assertInstanceOf(JugadorAdivinador::class, $jugadorAdivinador);
+        $this->jugadorAdivinador = JugadorAdivinador::crear($numeroSecreto);
+    }
+
+    public function testCrearDevuelveUnJugadorAdivinador() {
+        $this->assertInstanceOf(JugadorAdivinador::class, $this->jugadorAdivinador);
     }
 
     public function testElJugadorPiensaEnUnNumero() {
-        $numeroSecreto = NumeroSecreto::crear();
-        $jugadorAdivinador = JugadorAdivinador::crear($numeroSecreto);
-        $jugadorAdivinador->pensar();
-        $this->assertTrue(is_numeric($jugadorAdivinador->decir()));
+        $this->jugadorAdivinador->pensar();
+        $this->assertTrue(is_numeric($this->jugadorAdivinador->decir()));
     }
 
     public function testElJugadorDaNumerosMenoresHastaElCero() {
-        $numeroSecreto = NumeroSecreto::crear();
-        $jugadorAdivinador = JugadorAdivinador::crear($numeroSecreto);
-        $jugadorAdivinador->pensar();
-        $resultado1 = $jugadorAdivinador->decir();
+        $this->jugadorAdivinador->pensar();
+        $resultado1 = $this->jugadorAdivinador->decir();
         for ($index = 0; $index < 1000; $index++) {
-            $jugadorAdivinador->analizar("<");
-            $jugadorAdivinador->pensar();
-            $resultado2 = $jugadorAdivinador->decir();
+            $this->jugadorAdivinador->analizar("<");
+            $this->jugadorAdivinador->pensar();
+            $resultado2 = $this->jugadorAdivinador->decir();
             $this->assertGreaterThanOrEqual($resultado2, $resultado1);
         }
     }
-    
+
     public function testElJugadorDaNumerosMayoresHastaElCien() {
-        $numeroSecreto = NumeroSecreto::crear();
-        $jugadorAdivinador = JugadorAdivinador::crear($numeroSecreto);
-        $jugadorAdivinador->pensar();
-        $resultado1 = $jugadorAdivinador->decir();
+        $this->jugadorAdivinador->pensar();
+        $resultado1 = $this->jugadorAdivinador->decir();
         for ($index = 0; $index < 1000; $index++) {
-            $jugadorAdivinador->analizar(">");
-            $jugadorAdivinador->pensar();
-            $resultado2 = $jugadorAdivinador->decir();
-            $this->assertGreaterThanOrEqual($resultado1,$resultado2);
+            $this->jugadorAdivinador->analizar(">");
+            $this->jugadorAdivinador->pensar();
+            $resultado2 = $this->jugadorAdivinador->decir();
+            $this->assertGreaterThanOrEqual($resultado1, $resultado2);
         }
     }
 
     public function testUnaVezEncontradoDaSiempreElMismoNumero() {
-        $numeroSecreto = NumeroSecreto::crear();
-        $jugadorAdivinador = JugadorAdivinador::crear($numeroSecreto);
-        $jugadorAdivinador->pensar();
-        $jugadorAdivinador->analizar("=");
-        $resultado = $jugadorAdivinador->decir();
+        $this->jugadorAdivinador->pensar();
+        $this->jugadorAdivinador->analizar("=");
+        $resultado = $this->jugadorAdivinador->decir();
         for ($index = 0; $index < 1000; $index++) {
-            $jugadorAdivinador->pensar();
-            $this->assertEquals($resultado, $jugadorAdivinador->decir());
+            $this->jugadorAdivinador->pensar();
+            $this->assertEquals($resultado, $this->jugadorAdivinador->decir());
         }
     }
 

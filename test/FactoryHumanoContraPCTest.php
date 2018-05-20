@@ -2,14 +2,19 @@
 
 class FactoryHumanoContraPCTest extends PHPUnit\Framework\TestCase {
 
-    public function testDevuelveUnaFactoriaHumanoContraPC() {
-        $factoria = new EB\FactoryHumanoContraPC();
-        $this->assertInstanceOf(EB\FactoryHumanoContraPC::class, $factoria);
+    private $factoria;
+
+    public function setUp() {
+        $this->factoria = new EB\FactoryHumanoContraPC();
     }
+
+    public function testDevuelveUnaFactoriaHumanoContraPC() {
+        $this->assertInstanceOf(EB\FactoryHumanoContraPC::class, $this->factoria);
+    }
+
     public function testDevuelveUnHumanoYUnaPCComoJugadores() {
-        $factoria = new EB\FactoryHumanoContraPC();
-        $this->assertInstanceOf(EB\JugadorAdivinador::class, $factoria->darJugadorAdivinanza());
-        $this->assertInstanceOf(EB\HumanoNumero::class, $factoria->darJugadorNumero());
+        $this->assertInstanceOf(EB\JugadorAdivinador::class, $this->factoria->darJugadorAdivinanza());
+        $this->assertInstanceOf(EB\HumanoNumero::class, $this->factoria->darJugadorNumero());
     }
 
 }

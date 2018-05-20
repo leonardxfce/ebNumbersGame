@@ -5,28 +5,33 @@ use EB\NumeroSecreto;
 
 class NumeroSecretoTest extends TestCase {
 
+    private $numeroSecreto;
+
+    public function setUp() {
+        $this->numeroSecreto = NumeroSecreto::crear();
+    }
+
     public function testCrearEntreDevuelveUnNumeroSecreto() {
-        $numeroSecreto = NumeroSecreto::crear();
-        $this->assertInstanceOf(NumeroSecreto::class, $numeroSecreto);
+        $this->assertInstanceOf(NumeroSecreto::class, $this->numeroSecreto);
     }
 
     public function testElNumeroSecretoEs100() {
-        $numeroSecreto = NumeroSecreto::crearEntre(100, 100);
+        $numeroSecreto = $this->numeroSecreto->crearEntre(100, 100);
         $numeroSecreto->generar();
         $this->assertEquals(100, $numeroSecreto->es());
     }
 
     public function testNoSeGeneranNumerosIguales() {
-        $numeroSecreto = NumeroSecreto::crearEntre(0, 100);
+        $numeroSecreto = $this->numeroSecreto->crearEntre(0, 100);
         $numeroSecreto->generar();
-        $numeroSecreto2 = NumeroSecreto::crearEntre(0, 100);
+        $numeroSecreto2 = $this->numeroSecreto->crearEntre(0, 100);
         $numeroSecreto2->generar();
         $this->assertNotEquals($numeroSecreto2->es(), $numeroSecreto->es());
     }
 
     public function testElNumeroSecretoDaNumerosMenores() {
         for ($index = 0; $index < 1000; $index++) {
-            $numeroSecreto = NumeroSecreto::crearEntre(0, 99);
+            $numeroSecreto = $this->numeroSecreto->crearEntre(0, 99);
             $numeroSecreto->generar();
             $resultado = $numeroSecreto->esMenorQue($numeroSecreto->es() + 1);
             $this->assertTrue($resultado);
@@ -35,7 +40,7 @@ class NumeroSecretoTest extends TestCase {
 
     public function testElNumeroSecretoDaNumerosMayores() {
         for ($index = 0; $index < 1000; $index++) {
-            $numeroSecreto = NumeroSecreto::crearEntre(1, 100);
+            $numeroSecreto = $this->numeroSecreto->crearEntre(1, 100);
             $numeroSecreto->generar();
             $resultado = $numeroSecreto->esMayorQue($numeroSecreto->es() - 1);
             $this->assertTrue($resultado);

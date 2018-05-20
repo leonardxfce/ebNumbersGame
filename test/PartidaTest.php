@@ -2,49 +2,44 @@
 
 class PartidaTest extends PHPUnit\Framework\TestCase {
 
-    public function testDevuelveUnaPartida() {
+    private $partida;
+
+    protected function setUp() {
         $consola = \EB\UtilConsola::crearManejadorConsola();
-        $partida = EB\Partida::crear($consola);
-        $this->assertInstanceOf(EB\Partida::class, $partida);
+        $this->partida = EB\Partida::crear($consola);
+    }
+
+    public function testDevuelveUnaPartida() {
+        $this->assertInstanceOf(EB\Partida::class, $this->partida);
     }
 
     public function testDevuelveDosJugadoresPC() {
-        $consola = \EB\UtilConsola::crearManejadorConsola();
-        $partida = EB\Partida::crear($consola);
-        $partida->definirTipoPartida("PC-PC");
-        $esperados = $partida->darJugadores();
+        $this->partida->definirTipoPartida("PC-PC");
+        $esperados = $this->partida->darJugadores();
         $this->assertInstanceOf(EB\JugadorNumero::class, $esperados[0]);
         $this->assertInstanceOf(EB\JugadorAdivinador::class, $esperados[1]);
     }
 
     public function testDevuelvePCyHumano() {
-        $consola = \EB\UtilConsola::crearManejadorConsola();
-        $partida = EB\Partida::crear($consola);
-        $partida->definirTipoPartida("HUMANO-PC");
-        $esperados = $partida->darJugadores();
+        $this->partida->definirTipoPartida("HUMANO-PC");
+        $esperados = $this->partida->darJugadores();
         $this->assertInstanceOf(EB\HumanoNumero::class, $esperados[0]);
         $this->assertInstanceOf(EB\JugadorAdivinador::class, $esperados[1]);
     }
 
     public function testDevuelveHumanoyPC() {
-        $consola = \EB\UtilConsola::crearManejadorConsola();
-        $partida = EB\Partida::crear($consola);
-        $partida->definirTipoPartida("PC-HUMANO");
-        $esperados = $partida->darJugadores();
+        $this->partida->definirTipoPartida("PC-HUMANO");
+        $esperados = $this->partida->darJugadores();
         $this->assertInstanceOf(EB\JugadorNumero::class, $esperados[0]);
         $this->assertInstanceOf(EB\HumanoAdivinanza::class, $esperados[1]);
     }
 
     public function testSeguirJugandoDevuelveTrueSiSeEscribeSi() {
-        $consola = \EB\UtilConsola::crearManejadorConsola();
-        $partida = EB\Partida::crear($consola);
-        $this->assertTrue($partida->seguirJugando("SI"));
+        $this->assertTrue($this->partida->seguirJugando("SI"));
     }
 
     public function testSeguirJugandoDevuelveFalseParaCualquierOtroString() {
-        $consola = \EB\UtilConsola::crearManejadorConsola();
-        $partida = EB\Partida::crear($consola);
-        $this->assertFalse($partida->seguirJugando(""));
+        $this->assertFalse($this->partida->seguirJugando(""));
     }
 
 }
