@@ -68,6 +68,7 @@ class Partida {
         $this->consola->mostrar("Seguir Jugando");
         $opcion = $this->consola->leer();
         if ($opcion === "SI") {
+            $this->demo = false;
             return true;
         }
         return false;

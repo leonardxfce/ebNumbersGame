@@ -1,6 +1,6 @@
 <?php
 
-namespace EB\Jugadores;
+namespace EB;
 
 interface AbstractFactoryJugadores {
 
