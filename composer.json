@@ -11,8 +11,11 @@
         "phpunit/phpunit": "^5"
     },
     "autoload": {
-        "psr-4":{
+        "psr-4": {
             "EB\\": "src/"
         }
+    },
+    "scripts": {
+        "test": "@php ./vendor/phpunit/phpunit/phpunit test/"
     }
 }
