@@ -3,4 +3,5 @@ language: php
 php:
   - nightly
 script:
+- composer dump-autoload
 - composer test
