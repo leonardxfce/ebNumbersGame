@@ -16,6 +16,6 @@
         }
     },
     "scripts": {
-        "test": "@php $COMPOSER_BIN_DIR/phpunit test/"
+        "test": "@php phpunit test/"
     }
 }
