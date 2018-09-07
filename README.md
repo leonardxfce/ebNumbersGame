@@ -19,3 +19,5 @@ Se necesita [PHP](http://php.net/downloads.php) en su version 7.0 o superior, ta
 
 Si composer esta en el PATH el comando queda asi: `composer install`  
 Correctamente instalado se pueden correr los test: `composer test`
+
+Travis
