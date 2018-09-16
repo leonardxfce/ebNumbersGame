@@ -9,5 +9,5 @@ addons:
       secure: $SONAR_TOKEN
 script:
   - composer dump-autoload
-  - phpunit test/
+  - composer test
   - sonar-scanner
