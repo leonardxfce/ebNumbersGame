@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "phpunit/phpunit": "^5",
+        "phpunit/phpunit": "^4.8.35 || ^5.4.3 || ^6.0",
         "atoum/atoum": "^3.3",
         "php-coveralls/php-coveralls": "^2.1",
         "phpunit/phpcov": "^2.0"
@@ -22,6 +22,7 @@
         "test": "phpunit test/"
     },
     "require-dev": {
+        "phpunit/phpunit": "^4.8.35 || ^5.4.3 || ^6.0",
         "php-coveralls/php-coveralls": "^2.1",
         "phpunit/phpcov": "^2.0"
     }
