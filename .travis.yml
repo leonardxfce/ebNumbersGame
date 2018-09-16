@@ -7,4 +7,5 @@ addons:
     token:
       secure: $SONAR_TOKEN
 script:
+  - phpunit test/
   - sonar-scanner
