@@ -1,4 +1,12 @@
 # Eventbrite Juego del Numero Secreto
+
+[![Coverage Status](https://coveralls.io/repos/github/leonardxfce/ebNumbersGame/badge.svg?branch=master)](https://coveralls.io/github/leonardxfce/ebNumbersGame?branch=master)
+[![Build Status](https://travis-ci.org/leonardxfce/ebNumbersGame.svg?branch=master)](https://travis-ci.org/leonardxfce/ebNumbersGame)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=leonardxfce_ebNumbersGame&metric=bugs)](https://sonarcloud.io/project/issues?id=leonardxfce_ebNumbersGame&resolved=false&types=BUG)
+[![Smells](https://sonarcloud.io/api/project_badges/measure?project=leonardxfce_ebNumbersGame&metric=code_smells)](https://sonarcloud.io/project/issues?id=leonardxfce_ebNumbersGame&resolved=false&types=CODE_SMELL)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=leonardxfce_ebNumbersGame&metric=coverage)](https://sonarcloud.io/component_measures?id=leonardxfce_ebNumbersGame&metric=coverage)
+[![lines](https://sonarcloud.io/api/project_badges/measure?project=leonardxfce_ebNumbersGame&metric=duplicated_lines_density)](https://sonarcloud.io/component_measures?id=leonardxfce_ebNumbersGame&metric=duplicated_lines_density)
+![linesDeCode](https://sonarcloud.io/api/project_badges/measure?project=leonardxfce_ebNumbersGame&metric=ncloc)  
 Desarrollado en PHP, con dependencias en composer.
 ## Uso
 El archivo de inicio de la aplicación se encuentra en `src/index.php`  
