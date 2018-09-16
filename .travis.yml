@@ -8,6 +8,6 @@ addons:
     token:
       secure: $SONAR_TOKEN
 script:
-  - composer dump-autoload
+  - composer install
   - composer test
   - sonar-scanner
