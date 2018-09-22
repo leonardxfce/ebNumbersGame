@@ -4,25 +4,29 @@ use PHPUnit\Framework\TestCase;
 use EB\JugadorAdivinador;
 use EB\NumeroSecreto;
 
-class JugadorAdivinadorTest extends TestCase {
-
+class JugadorAdivinadorTest extends TestCase
+{
     private $jugadorAdivinador;
 
-    public function setUp() {
+    public function setUp()
+    {
         $numeroSecreto = NumeroSecreto::crear();
         $this->jugadorAdivinador = JugadorAdivinador::crear($numeroSecreto);
     }
 
-    public function testCrearDevuelveUnJugadorAdivinador() {
+    public function testCrearDevuelveUnJugadorAdivinador()
+    {
         $this->assertInstanceOf(JugadorAdivinador::class, $this->jugadorAdivinador);
     }
 
-    public function testElJugadorPiensaEnUnNumero() {
+    public function testElJugadorPiensaEnUnNumero()
+    {
         $this->jugadorAdivinador->pensar();
         $this->assertTrue(is_numeric($this->jugadorAdivinador->decir()));
     }
 
-    public function testElJugadorDaNumerosMenoresHastaElCero() {
+    public function testElJugadorDaNumerosMenoresHastaElCero()
+    {
         $this->jugadorAdivinador->pensar();
         $resultado1 = $this->jugadorAdivinador->decir();
         for ($index = 0; $index < 1000; $index++) {
@@ -33,7 +37,8 @@ class JugadorAdivinadorTest extends TestCase {
         }
     }
 
-    public function testElJugadorDaNumerosMayoresHastaElCien() {
+    public function testElJugadorDaNumerosMayoresHastaElCien()
+    {
         $this->jugadorAdivinador->pensar();
         $resultado1 = $this->jugadorAdivinador->decir();
         for ($index = 0; $index < 1000; $index++) {
@@ -44,7 +49,8 @@ class JugadorAdivinadorTest extends TestCase {
         }
     }
 
-    public function testUnaVezEncontradoDaSiempreElMismoNumero() {
+    public function testUnaVezEncontradoDaSiempreElMismoNumero()
+    {
         $this->jugadorAdivinador->pensar();
         $this->jugadorAdivinador->analizar("=");
         $resultado = $this->jugadorAdivinador->decir();
@@ -53,5 +59,4 @@ class JugadorAdivinadorTest extends TestCase {
             $this->assertEquals($resultado, $this->jugadorAdivinador->decir());
         }
     }
-
 }

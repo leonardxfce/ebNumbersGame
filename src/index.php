@@ -1,11 +1,12 @@
 <?php
 
 namespace EB;
-require 'vendor/autoload.php';
 
-class Inicio{
+class Inicio
+{
     public function Iniciar()
     {
+        require_once 'vendor/autoload.php';
         $consola = UtilConsola::crearManejadorConsola();
         $partida = Partida::crear($consola);
         do {

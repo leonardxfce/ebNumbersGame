@@ -2,25 +2,29 @@
 
 namespace EB;
 
-class JugadorNumero implements Jugable {
-
+class JugadorNumero implements Jugable
+{
     private $numeroSecreto;
     private $estadoDeLaAdivinanza;
 
-    private function __construct(NumeroSecreto $numero) {
+    private function __construct(NumeroSecreto $numero)
+    {
         $this->numeroSecreto = $numero;
         $this->estadoDeLaAdivinanza = "";
     }
 
-    public static function crear(NumeroSecreto $numeroSecreto): JugadorNumero {
+    public static function crear(NumeroSecreto $numeroSecreto): JugadorNumero
+    {
         return new JugadorNumero($numeroSecreto);
     }
 
-    public function pensar() {
+    public function pensar()
+    {
         $this->numeroSecreto->generar();
     }
 
-    public function analizar($numeroDelOtroJugador) {
+    public function analizar($numeroDelOtroJugador)
+    {
         if ($this->numeroSecreto->es($numeroDelOtroJugador)) {
             $this->estadoDeLaAdivinanza = "=";
         }
@@ -33,8 +37,8 @@ class JugadorNumero implements Jugable {
         return $this->estadoDeLaAdivinanza;
     }
 
-    public function decir(): String {
+    public function decir(): String
+    {
         return $this->estadoDeLaAdivinanza;
     }
-
 }

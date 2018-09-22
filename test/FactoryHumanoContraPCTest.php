@@ -1,20 +1,22 @@
 <?php
 
-class FactoryHumanoContraPCTest extends PHPUnit\Framework\TestCase {
-
+class FactoryHumanoContraPCTest extends PHPUnit\Framework\TestCase
+{
     private $factoria;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->factoria = new EB\FactoryHumanoContraPC();
     }
 
-    public function testDevuelveUnaFactoriaHumanoContraPC() {
+    public function testDevuelveUnaFactoriaHumanoContraPC()
+    {
         $this->assertInstanceOf(EB\FactoryHumanoContraPC::class, $this->factoria);
     }
 
-    public function testDevuelveUnHumanoYUnaPCComoJugadores() {
+    public function testDevuelveUnHumanoYUnaPCComoJugadores()
+    {
         $this->assertInstanceOf(EB\JugadorAdivinador::class, $this->factoria->darJugadorAdivinanza());
         $this->assertInstanceOf(EB\HumanoNumero::class, $this->factoria->darJugadorNumero());
     }
-
 }

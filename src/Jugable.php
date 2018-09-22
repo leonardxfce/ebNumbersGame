@@ -2,8 +2,8 @@
 
 namespace EB;
 
-interface Jugable {
-
+interface Jugable
+{
     public function analizar($datoDelOtroJugador);
 
     public function pensar();
