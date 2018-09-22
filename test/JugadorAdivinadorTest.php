@@ -29,24 +29,21 @@ class JugadorAdivinadorTest extends TestCase
     {
         $this->jugadorAdivinador->pensar();
         $resultado1 = $this->jugadorAdivinador->decir();
-        for ($index = 0; $index < 1000; $index++) {
-            $this->jugadorAdivinador->analizar("<");
-            $this->jugadorAdivinador->pensar();
-            $resultado2 = $this->jugadorAdivinador->decir();
-            $this->assertGreaterThanOrEqual($resultado2, $resultado1);
-        }
+        $this->jugadorAdivinador->analizar("<");
+        $this->jugadorAdivinador->pensar();
+        $resultado2 = $this->jugadorAdivinador->decir();
+        $this->assertGreaterThanOrEqual($resultado2, $resultado1);
     }
 
     public function testElJugadorDaNumerosMayoresHastaElCien()
     {
         $this->jugadorAdivinador->pensar();
         $resultado1 = $this->jugadorAdivinador->decir();
-        for ($index = 0; $index < 1000; $index++) {
-            $this->jugadorAdivinador->analizar(">");
-            $this->jugadorAdivinador->pensar();
-            $resultado2 = $this->jugadorAdivinador->decir();
-            $this->assertGreaterThanOrEqual($resultado1, $resultado2);
-        }
+        
+        $this->jugadorAdivinador->analizar(">");
+        $this->jugadorAdivinador->pensar();
+        $resultado2 = $this->jugadorAdivinador->decir();
+        $this->assertGreaterThanOrEqual($resultado1, $resultado2);
     }
 
     public function testUnaVezEncontradoDaSiempreElMismoNumero()
