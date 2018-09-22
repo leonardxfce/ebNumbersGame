@@ -2,29 +2,33 @@
 
 namespace EB;
 
-class Partida {
-
+class Partida
+{
     private $consola;
     private $jugadorQuePiensaElNumero;
     private $jugadorQueAdivinaElNumero;
     private $demo;
 
-    private function __construct(UtilConsola $consola) {
+    private function __construct(UtilConsola $consola)
+    {
         $this->consola = $consola;
         $this->demo = false;
     }
 
-    public static function crear(UtilConsola $consola) {
+    public static function crear(UtilConsola $consola)
+    {
         return new Partida($consola);
     }
 
-    public function configurar() {
+    public function configurar()
+    {
         $this->consola->mostrar("Cual Modo de Juego desea utilizar");
         $opcion = $this->consola->leer();
         $this->definirTipoPartida($opcion);
     }
 
-    public function definirTipoPartida($opcion) {
+    public function definirTipoPartida($opcion)
+    {
         switch ($opcion) {
             case "PC-HUMANO":
                 $fabrica = new FactoryPCContraHumano();
@@ -47,7 +51,8 @@ class Partida {
         $this->jugadorQueAdivinaElNumero = $fabrica->darJugadorAdivinanza();
     }
 
-    public function jugar() {
+    public function jugar()
+    {
         $this->jugadorQuePiensaElNumero->pensar();
         $this->consola->mostrar("Se creó el numero Secreto.. cual es?");
         do {
@@ -64,7 +69,8 @@ class Partida {
         } while ($condicion);
     }
 
-    public function seguirJugando($opcion) {
+    public function seguirJugando($opcion)
+    {
         if ($opcion === "SI") {
             $this->demo = false;
             return true;
@@ -72,8 +78,8 @@ class Partida {
         return false;
     }
 
-    public function darJugadores() {
+    public function darJugadores()
+    {
         return [$this->jugadorQuePiensaElNumero, $this->jugadorQueAdivinaElNumero];
     }
-
 }

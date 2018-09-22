@@ -2,23 +2,26 @@
 
 namespace EB;
 
-class JugadorAdivinador implements Jugable {
-
+class JugadorAdivinador implements Jugable
+{
     private $numeroSecreto;
     private $min;
     private $max;
 
-    private function __construct($numeroSecreto, $min, $max) {
+    private function __construct($numeroSecreto, $min, $max)
+    {
         $this->min = $min;
         $this->max = $max;
         $this->numeroSecreto = $numeroSecreto;
     }
 
-    public static function crear(NumeroSecreto $numeroSecreto): JugadorAdivinador {
+    public static function crear(NumeroSecreto $numeroSecreto): JugadorAdivinador
+    {
         return new JugadorAdivinador($numeroSecreto, 0, 100);
     }
 
-    public function analizar($repuestaDelOtroJugador) {
+    public function analizar($repuestaDelOtroJugador)
+    {
         if ($repuestaDelOtroJugador === ">") {
             $this->min = $this->decir() + 1;
         }
@@ -31,14 +34,15 @@ class JugadorAdivinador implements Jugable {
         }
     }
 
-    public function pensar() {
+    public function pensar()
+    {
         $this->numeroSecreto = $this->numeroSecreto
                 ->crearEntre($this->min, $this->max);
         $this->numeroSecreto->generar();
     }
 
-    public function decir(): int {
+    public function decir(): int
+    {
         return $this->numeroSecreto->es();
     }
-
 }

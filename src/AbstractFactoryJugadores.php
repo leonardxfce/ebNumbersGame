@@ -2,8 +2,8 @@
 
 namespace EB;
 
-interface AbstractFactoryJugadores {
-
+interface AbstractFactoryJugadores
+{
     public function darJugadorNumero();
 
     public function darJugadorAdivinanza();
