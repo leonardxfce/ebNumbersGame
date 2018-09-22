@@ -16,4 +16,5 @@ script:
   - php vendor/bin/php-coveralls -v
 cache:
   directories:
-    - $HOME/.composer/cache/files
+    - $HOME/.composer/cache
+    - vendor
